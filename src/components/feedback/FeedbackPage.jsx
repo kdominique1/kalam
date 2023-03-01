@@ -53,11 +53,13 @@ const StudentFeedback = (props) => {
       }
       const userId = parseInt(decryptText(localStorage.getItem("userId")), 10);
 
+
       const dataURL = `${baseUrl}students/feedback/${studentId}/${userId}`;
       await axios
         .post(dataURL, {
           student_stage: rowData[0],
           feedback: feedbackValue,
+
         })
         .then(() => {
           //console.log(response.data);
@@ -96,6 +98,8 @@ const StudentFeedback = (props) => {
       loggedInUser?.user_name?.toString().split(" ").join("").toLowerCase() ||
       "guest"
     }`;
+    console.log(currentUser,">>>>>>>>")
+    
     const feedbackTime = `Feedback date ${time.getDate()}/${month}/${time.getFullYear()}`;
     return feedback
       ? `${currentUser}: ${feedbackTime}\n\n${feedback}`
