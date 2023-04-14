@@ -9,7 +9,6 @@ import {
   Dialog,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-
 import Slider from "react-slick";
 import { makeStyles } from "@mui/styles";
 
@@ -19,9 +18,23 @@ import "slick-carousel/slick/slick-theme.css";
 import YouTube from "react-youtube";
 import playIcon from "../../assets/img/playicon.png";
 
+const PrevArrow = (props) => (
+  <IconButton onClick={props.onClick}>
+    <i className="fa fa-chevron-left" />
+  </IconButton>
+);
+
+const NextArrow = (props) => (
+  <IconButton onClick={props.onClick}>
+    <i className="fa fa-chevron-right" />
+  </IconButton>
+);
+
 const settings = {
   dots: false,
-  // arrows: true,
+  arrows: true,
+  prevArrow: <PrevArrow />,
+  nextArrow: <NextArrow />,
   autoplay: true,
   autoplaySpeed: 3000,
   infinite: true,
@@ -39,20 +52,20 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
   },
-  slider: {
-    maxWidth: 400,
-    margin: "0 auto",
-    padding: "1.2rem",
-    [theme.breakpoints.up("sm")]: {
-      maxWidth: 400,
-    },
-    [theme.breakpoints.up("lg")]: {
-      maxWidth: 600,
-    },
-    [theme.breakpoints.up("xl")]: {
-      maxWidth: 720,
-    },
-  },
+  // slider: {
+  //   maxWidth: 400,
+  //   margin: "0 auto",
+  //   padding: "1.2rem",
+  //   [theme.breakpoints.up("sm")]: {
+  //     maxWidth: 400,
+  //   },
+  //   [theme.breakpoints.up("lg")]: {
+  //     maxWidth: 600,
+  //   },
+  //   [theme.breakpoints.up("xl")]: {
+  //     maxWidth: 720,
+  //   },
+  // },
   title: {
     marginLeft: theme.spacing(2),
   },
@@ -107,10 +120,16 @@ const aboutNavgurukul = [
 ];
 
 // var PrevArrow = React.createClass({
-//   render(){
-//     return (<IconButton className="slickArrowPrev" onClick={this.props.onClick} iconClassName="fa fa-chevron-circle-left" />)
-//   }
-// })
+//   render() {
+//     return (
+//       <IconButton
+//         className="slickArrowPrev"
+//         onClick={this.props.onClick}
+//         iconClassName="fa fa-chevron-circle-left"
+//       />
+//     );
+//   },
+// });
 
 window.mobileAndTabletCheck = function mobileAndTabletCheck() {
   let check = false;
